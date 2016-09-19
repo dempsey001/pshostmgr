@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/pshostmgr/obj
+/pshostmgr/bin
+/pshostmgr/packages/*
+/pshostmgr.test/obj/Debug
+/pshostmgr.test/obj/Release
+*.suo
