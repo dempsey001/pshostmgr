@@ -31,11 +31,12 @@ This will return a listing of the current host file entries.
 ```
 PS> Get-HfHost
 
-| Hostname        | Address      |
-| ------------- |:-------------:|
-| api.domain.com | 127.0.0.1 |
-| machine.test.net | 10.0.1.25      |
-| other.test.net | 10.0.1.26      |
+| Hostname         | Address      |
+| ---------------  |------------- |
+| api.domain.com   | 127.0.0.1    |
+| machine.test.net | 10.0.1.25    |
+| other.test.net   | 10.0.1.26    |
+
 ```
 
 This list may be filtered, optionally, by hostname.
@@ -43,10 +44,11 @@ This list may be filtered, optionally, by hostname.
 ```
 Get-HfHost -Hostname "api.domain.com","other.test.net"
 
-| Hostname        | Address      |
-| ------------- |:-------------:|
-| api.domain.com | 127.0.0.1 |
-| other.test.net | 10.0.1.26      |
+| Hostname       | Address       |
+| -------------  | ------------- |
+| api.domain.com | 127.0.0.1     |
+| other.test.net | 10.0.1.26     |
+
 ```
 
 ### Add-HfHost 
@@ -56,9 +58,9 @@ This cmdlet allows a single entry to be added to the host file. This hostname mu
 ```
 PS> Add-HfHost -Hostname "test.myhost.com" -Address "10.0.2.22"
 
-| Hostname        | Address      |Type     |
-| ------------- |:-------------:|
-| test.myhost.com | 10.0.2.22 | HostForIPv4 |
+| Hostname        | Address      | Type        |
+| -------------   |------------- | ----------- |
+| test.myhost.com | 10.0.2.22    | HostForIPv4 |
 ```
 
 ### Remove-HfHost
@@ -69,22 +71,23 @@ The opposite of the add, this will remove a single entry from the host file by i
 PS> Remove-HfHost -Hostname "test.myhost.com" 
 ```
 
-### Set-HfHostDestination
+### Set-HfHostAddress
 
 This is a shortcut method that can basically be accomplished with an Add-/Remove-. This provides the ability to just update a single destination host to a new address. The hostname must already exist and the address must be valid else an error will be thrown.
 
 ```
 PS> Get-HfHost
 
-| Hostname        | Address      |
-| ------------- |:-------------:|
-| test.myhost.com | 127.0.0.1 |
+| Hostname        | Address    |
+| -------------   | ---------- |
+| test.myhost.com | 127.0.0.1  |
 
-PS> Set-HfHostDestination -Hostname "test.myhost.com" -Address "10.2.22.33"
+PS> Set-HfHostAddress -Hostname "test.myhost.com" -Address "10.2.22.33"
 
 PS> Get-HfHost
 
 | Hostname        | Address      |
-| ------------- |:-------------:|
-| test.myhost.com | 10.2.22.33 |
+| -------------   | ------------ |
+| test.myhost.com | 10.2.22.33   |
+
 ```
