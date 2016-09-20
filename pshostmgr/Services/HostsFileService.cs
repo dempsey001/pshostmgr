@@ -304,23 +304,25 @@ namespace ManageHosts.Services
         private string BuildHostFileText(IEnumerable<HostFileEntry> entries)
         {
             var hostFileTextBuilder = new StringBuilder();
-
-			var maxLenAddress = entries.Max(x => x.Address.Length);
-			maxLenAddress += 5; // add extra buffer.
-
 			// Add Header
 			hostFileTextBuilder.Append(
-                HostFileConstants.MicrosoftHostFileHeader);
-            
-            // add seperator newline for readability.
-            hostFileTextBuilder.Append(Environment.NewLine);
+				HostFileConstants.MicrosoftHostFileHeader);
+
+			// add seperator newline for readability.
+			hostFileTextBuilder.Append(Environment.NewLine);
 			hostFileTextBuilder.Append(Environment.NewLine);
 
 			// tack on disclaimer so we know this file was
 			// a generated version.
 			hostFileTextBuilder.Append(HostFileConstants.PsHostsDisclaimer);
-            hostFileTextBuilder.Append(Environment.NewLine);
 			hostFileTextBuilder.Append(Environment.NewLine);
+			hostFileTextBuilder.Append(Environment.NewLine);
+
+			if (entries.Count() == 0)
+				return hostFileTextBuilder.ToString();
+
+			var maxLenAddress = entries.Max(x => x.Address.Length);
+			maxLenAddress += 5; // add extra buffer.
 
 			entries?.ToList().ForEach(en =>
 			{

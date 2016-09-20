@@ -74,6 +74,7 @@ namespace ManageHosts.Test
 		[TestMethod, ExpectedException(typeof(ServiceNotFoundException))]
 		public void Should_ThrowIfFetchingUnregisteredType()
 		{
+			ServiceManager.Provider = () => new ServiceManager();
 			ServiceManager.Get<INoImpl>();
 
 			// END FUNCTION

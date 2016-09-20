@@ -35,7 +35,7 @@ namespace ManageHosts.Powershell.CmdLets
 		/// Default ctor. Notes the hostname that was not present.
 		/// </summary>
 		public MissingHostException(string hostname)
-			: base($"Host with name, ${hostname}, was not found.")
+			: base($"Host with name, {hostname}, was not found.")
 		{
 			Verify.NotEmpty(hostname, nameof(hostname));
 

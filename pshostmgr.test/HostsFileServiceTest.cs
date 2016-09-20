@@ -85,6 +85,23 @@ namespace ManageHosts.Test
 		}
 
 		[TestMethod]
+		public void Should_WriteNoEntries()
+		{
+			var hfs = new HostsFileService()
+			{
+				HostFilePath = Path.GetTempFileName()
+			};
+
+			hfs.WriteEntries(new HostFileEntry[] { });
+
+			Assert.AreEqual(0, hfs.GetEntries().Count());
+
+			try { File.Delete(hfs.HostFilePath); } catch { }
+
+			// END FUNCTION
+		}
+
+		[TestMethod]
 		public void Should_WriteCorrectEntries()
 		{
 			var hfs = new HostsFileService()
